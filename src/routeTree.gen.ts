@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExhibitIdRouteImport } from './routes/exhibit.$id'
+import { Route as MuseumIdRouteImport } from './routes/museum.$id'
+import { Route as QrCodeRouteImport } from './routes/qr.$code'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExhibitIdRoute = ExhibitIdRouteImport.update({
+  id: '/exhibit/$id',
+  path: '/exhibit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MuseumIdRoute = MuseumIdRouteImport.update({
+  id: '/museum/$id',
+  path: '/museum/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QrCodeRoute = QrCodeRouteImport.update({
+  id: '/qr/$code',
+  path: '/qr/$code',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/exhibit/$id': typeof ExhibitIdRoute
+  '/museum/$id': typeof MuseumIdRoute
+  '/qr/$code': typeof QrCodeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/exhibit/$id': typeof ExhibitIdRoute
+  '/museum/$id': typeof MuseumIdRoute
+  '/qr/$code': typeof QrCodeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/exhibit/$id': typeof ExhibitIdRoute
+  '/museum/$id': typeof MuseumIdRoute
+  '/qr/$code': typeof QrCodeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/exhibit/$id' | '/museum/$id' | '/qr/$code'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/exhibit/$id' | '/museum/$id' | '/qr/$code'
+  id: '__root__' | '/' | '/exhibit/$id' | '/museum/$id' | '/qr/$code'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExhibitIdRoute: typeof ExhibitIdRoute
+  MuseumIdRoute: typeof MuseumIdRoute
+  QrCodeRoute: typeof QrCodeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/exhibit/$id': {
+      id: '/exhibit/$id'
+      path: '/exhibit/$id'
+      fullPath: '/exhibit/$id'
+      preLoaderRoute: typeof ExhibitIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/museum/$id': {
+      id: '/museum/$id'
+      path: '/museum/$id'
+      fullPath: '/museum/$id'
+      preLoaderRoute: typeof MuseumIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/qr/$code': {
+      id: '/qr/$code'
+      path: '/qr/$code'
+      fullPath: '/qr/$code'
+      preLoaderRoute: typeof QrCodeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExhibitIdRoute: ExhibitIdRoute,
+  MuseumIdRoute: MuseumIdRoute,
+  QrCodeRoute: QrCodeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

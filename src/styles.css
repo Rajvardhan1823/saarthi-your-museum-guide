@@ -132,6 +132,135 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+@theme inline {
+  --font-display: var(--display-font);
+  --font-body: var(--body-font);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-surface: var(--surface);
+  --color-surface-foreground: var(--surface-foreground);
+}
+
+/* ---------------- Saarthi museum themes ----------------
+   Each museum carries a theme key; the wrapper sets data-theme
+   and every token below swaps: palette, type mood, texture. */
+
+:root {
+  --brand: oklch(0.63 0.17 52);
+  --brand-foreground: oklch(0.99 0.01 90);
+  --surface: oklch(0.99 0.006 85);
+  --surface-foreground: oklch(0.22 0.02 60);
+  --display-font: "Marcellus", Georgia, serif;
+  --body-font: "Inter Tight", system-ui, sans-serif;
+  --texture: none;
+  --texture-size: auto;
+}
+
+[data-theme] {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--body-font);
+  background-image: var(--texture);
+  background-size: var(--texture-size);
+}
+
+[data-theme="history_museum"] {
+  --background: oklch(0.96 0.014 82);
+  --foreground: oklch(0.24 0.03 60);
+  --surface: oklch(0.99 0.008 85);
+  --surface-foreground: oklch(0.24 0.03 60);
+  --muted: oklch(0.92 0.02 78);
+  --muted-foreground: oklch(0.48 0.03 65);
+  --border: oklch(0.86 0.025 75);
+  --brand: oklch(0.5 0.13 45);
+  --brand-foreground: oklch(0.98 0.01 85);
+  --primary: oklch(0.32 0.05 55);
+  --primary-foreground: oklch(0.98 0.01 85);
+  --display-font: "Marcellus", Georgia, serif;
+  --body-font: "Inter Tight", system-ui, sans-serif;
+  --texture: radial-gradient(
+      oklch(0.55 0.05 60 / 0.07) 1px,
+      transparent 1.4px
+    );
+  --texture-size: 14px 14px;
+}
+
+[data-theme="art_gallery"] {
+  --background: oklch(0.975 0.008 95);
+  --foreground: oklch(0.26 0.015 60);
+  --surface: oklch(1 0 0);
+  --surface-foreground: oklch(0.26 0.015 60);
+  --muted: oklch(0.94 0.01 95);
+  --muted-foreground: oklch(0.52 0.015 70);
+  --border: oklch(0.89 0.01 90);
+  --brand: oklch(0.56 0.11 30);
+  --brand-foreground: oklch(0.99 0.005 95);
+  --primary: oklch(0.3 0.02 60);
+  --primary-foreground: oklch(0.99 0.005 95);
+  --display-font: "Cormorant Garamond", Georgia, serif;
+  --body-font: "Inter Tight", system-ui, sans-serif;
+  --texture: linear-gradient(
+    180deg,
+    oklch(0.99 0.006 95) 0%,
+    oklch(0.955 0.012 88) 100%
+  );
+  --texture-size: 100% 100%;
+}
+
+[data-theme="science_museum"] {
+  --background: oklch(0.19 0.035 250);
+  --foreground: oklch(0.95 0.01 250);
+  --surface: oklch(0.25 0.04 252);
+  --surface-foreground: oklch(0.95 0.01 250);
+  --muted: oklch(0.28 0.04 252);
+  --muted-foreground: oklch(0.75 0.03 250);
+  --border: oklch(0.36 0.05 250);
+  --brand: oklch(0.78 0.16 190);
+  --brand-foreground: oklch(0.18 0.04 250);
+  --primary: oklch(0.78 0.16 190);
+  --primary-foreground: oklch(0.18 0.04 250);
+  --display-font: "Space Grotesk", system-ui, sans-serif;
+  --body-font: "Space Grotesk", system-ui, sans-serif;
+  --texture:
+    linear-gradient(oklch(0.8 0.1 200 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(0.8 0.1 200 / 0.05) 1px, transparent 1px);
+  --texture-size: 32px 32px;
+}
+
+[data-theme="heritage_site"] {
+  --background: oklch(0.29 0.03 285);
+  --foreground: oklch(0.94 0.02 80);
+  --surface: oklch(0.35 0.035 285);
+  --surface-foreground: oklch(0.94 0.02 80);
+  --muted: oklch(0.37 0.03 285);
+  --muted-foreground: oklch(0.79 0.03 80);
+  --border: oklch(0.45 0.04 285);
+  --brand: oklch(0.74 0.14 65);
+  --brand-foreground: oklch(0.25 0.03 285);
+  --primary: oklch(0.74 0.14 65);
+  --primary-foreground: oklch(0.25 0.03 285);
+  --display-font: "Spectral", Georgia, serif;
+  --body-font: "Inter Tight", system-ui, sans-serif;
+  --texture: radial-gradient(
+    120% 90% at 50% 0%,
+    oklch(0.45 0.05 300 / 0.55) 0%,
+    transparent 70%
+  );
+  --texture-size: 100% 100%;
+}
+
+@utility saarthi-card {
+  background-color: var(--surface);
+  color: var(--surface-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+
+@utility display {
+  font-family: var(--display-font);
+  letter-spacing: -0.01em;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
@@ -140,5 +269,27 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--body-font);
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--display-font);
   }
 }
+
+@keyframes saarthi-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--brand) 55%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 18px color-mix(in oklab, var(--brand) 0%, transparent);
+  }
+}
+
+.mic-live {
+  animation: saarthi-pulse 1.4s ease-out infinite;
+}
+
