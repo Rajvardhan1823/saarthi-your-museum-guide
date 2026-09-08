@@ -62,8 +62,8 @@ function Home() {
   return (
     <ThemeShell theme="history_museum">
       <div className="pt-8">
-        <BrandMark />
-        <h1 className="display mt-6 text-3xl leading-tight">{t.tagline}</h1>
+        <Logo className="h-14 -ml-2" />
+        <h1 className="display mt-4 text-3xl leading-tight">{t.tagline}</h1>
       </div>
 
       <section className="mt-7">
