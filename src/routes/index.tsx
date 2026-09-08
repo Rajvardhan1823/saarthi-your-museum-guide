@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { BrandMark, LanguagePills, ThemeShell } from "@/components/saarthi";
+import { LanguagePills, Logo, ThemeShell } from "@/components/saarthi";
 import { T, type Lang } from "@/lib/i18n";
 import { MUSEUMS, THEME_LABEL, getExhibit } from "@/lib/museums";
 import { useLang } from "@/lib/use-lang";
