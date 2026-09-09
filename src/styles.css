@@ -293,3 +293,105 @@
   animation: saarthi-pulse 1.4s ease-out infinite;
 }
 
+/* ---- Siri-style speaking orb ---- */
+@keyframes siri-drift-a {
+  0%,
+  100% {
+    transform: translate(-6%, -4%) scale(1);
+  }
+  33% {
+    transform: translate(7%, 5%) scale(1.12);
+  }
+  66% {
+    transform: translate(-3%, 8%) scale(0.94);
+  }
+}
+
+@keyframes siri-drift-b {
+  0%,
+  100% {
+    transform: translate(6%, 5%) scale(1.05);
+  }
+  40% {
+    transform: translate(-8%, -6%) scale(0.9);
+  }
+  70% {
+    transform: translate(4%, -8%) scale(1.15);
+  }
+}
+
+@keyframes siri-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 6%) scale(0.92);
+  }
+  50% {
+    transform: translate(-5%, -7%) scale(1.18);
+  }
+}
+
+@keyframes siri-ring {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.15;
+  }
+}
+
+.siri-ring {
+  border: 2px solid color-mix(in oklab, var(--brand) 60%, transparent);
+  animation: siri-ring 2.6s ease-in-out infinite;
+}
+
+.siri-blob {
+  filter: blur(6px);
+  mix-blend-mode: screen;
+}
+
+.siri-blob-a {
+  background: radial-gradient(
+    circle at 35% 35%,
+    color-mix(in oklab, var(--brand) 92%, white) 0%,
+    color-mix(in oklab, var(--brand) 40%, transparent) 70%,
+    transparent 100%
+  );
+  animation: siri-drift-a 3.4s ease-in-out infinite;
+}
+
+.siri-blob-b {
+  background: radial-gradient(
+    circle at 65% 60%,
+    color-mix(in oklab, var(--primary) 85%, white) 0%,
+    color-mix(in oklab, var(--primary) 30%, transparent) 70%,
+    transparent 100%
+  );
+  animation: siri-drift-b 4.2s ease-in-out infinite;
+}
+
+.siri-blob-c {
+  background: radial-gradient(
+    circle at 50% 50%,
+    color-mix(in oklab, var(--brand) 70%, white) 0%,
+    transparent 75%
+  );
+  animation: siri-drift-c 2.8s ease-in-out infinite;
+}
+
+.siri-paused {
+  animation-play-state: paused;
+  opacity: 0.35;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .siri-ring,
+  .siri-blob,
+  .mic-live {
+    animation: none;
+  }
+}
+
+
