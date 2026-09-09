@@ -75,7 +75,11 @@ export const T: Record<Lang, Dict> = {
     enterCode: "Enter the code printed under the QR",
     open: "Open",
     codeNotFound: "No exhibit found for that code.",
+    qrInMuseum: "Scan a QR in this museum",
+    qrInMuseumHint: "Enter the code printed beside any exhibit here",
+    codeNotInMuseum: "That code belongs to another museum.",
   },
+
   hi: {
     tagline: "संग्रहालय में आपका आवाज़ मार्गदर्शक",
     chooseLanguage: "अपनी भाषा चुनें",
