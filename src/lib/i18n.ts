@@ -40,7 +40,11 @@ type Dict = {
   enterCode: string;
   open: string;
   codeNotFound: string;
+  qrInMuseum: string;
+  qrInMuseumHint: string;
+  codeNotInMuseum: string;
 };
+
 
 export const T: Record<Lang, Dict> = {
   en: {
@@ -71,7 +75,11 @@ export const T: Record<Lang, Dict> = {
     enterCode: "Enter the code printed under the QR",
     open: "Open",
     codeNotFound: "No exhibit found for that code.",
+    qrInMuseum: "Scan a QR in this museum",
+    qrInMuseumHint: "Enter the code printed beside any exhibit here",
+    codeNotInMuseum: "That code belongs to another museum.",
   },
+
   hi: {
     tagline: "संग्रहालय में आपका आवाज़ मार्गदर्शक",
     chooseLanguage: "अपनी भाषा चुनें",
@@ -100,7 +108,11 @@ export const T: Record<Lang, Dict> = {
     enterCode: "QR के नीचे छपा कोड लिखें",
     open: "खोलें",
     codeNotFound: "इस कोड का कोई प्रदर्श नहीं मिला।",
+    qrInMuseum: "इस संग्रहालय का QR स्कैन करें",
+    qrInMuseumHint: "यहाँ किसी भी प्रदर्श के पास छपा कोड लिखें",
+    codeNotInMuseum: "यह कोड किसी दूसरे संग्रहालय का है।",
   },
+
   mr: {
     tagline: "संग्रहालयातील तुमचा आवाज मार्गदर्शक",
     chooseLanguage: "तुमची भाषा निवडा",
@@ -129,5 +141,9 @@ export const T: Record<Lang, Dict> = {
     enterCode: "QR खाली छापलेला कोड लिहा",
     open: "उघडा",
     codeNotFound: "या कोडचा प्रदर्श सापडला नाही.",
+    qrInMuseum: "या संग्रहालयातील QR स्कॅन करा",
+    qrInMuseumHint: "इथल्या कोणत्याही प्रदर्शाशेजारी छापलेला कोड लिहा",
+    codeNotInMuseum: "हा कोड दुसऱ्या संग्रहालयाचा आहे.",
   },
+
 };
