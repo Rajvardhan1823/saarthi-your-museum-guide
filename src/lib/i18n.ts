@@ -141,5 +141,9 @@ export const T: Record<Lang, Dict> = {
     enterCode: "QR खाली छापलेला कोड लिहा",
     open: "उघडा",
     codeNotFound: "या कोडचा प्रदर्श सापडला नाही.",
+    qrInMuseum: "या संग्रहालयातील QR स्कॅन करा",
+    qrInMuseumHint: "इथल्या कोणत्याही प्रदर्शाशेजारी छापलेला कोड लिहा",
+    codeNotInMuseum: "हा कोड दुसऱ्या संग्रहालयाचा आहे.",
   },
+
 };
