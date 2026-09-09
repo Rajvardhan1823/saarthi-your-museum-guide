@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { LanguagePills, Logo, ThemeShell } from "@/components/saarthi";
+import { LanguagePills, Logo, QrEntry, ThemeShell } from "@/components/saarthi";
+import { cityName, museumName, themeLabel } from "@/lib/content-i18n";
 import { T, type Lang } from "@/lib/i18n";
 import { MUSEUMS, THEME_LABEL, getExhibit } from "@/lib/museums";
 import { useLang } from "@/lib/use-lang";
@@ -38,7 +39,7 @@ function Home() {
   const [lang, setLang] = useLang();
   const [query, setQuery] = useState("");
   const [code, setCode] = useState("");
-  const [codeError, setCodeError] = useState(false);
+  const [codeError, setCodeError] = useState<string | null>(null);
   const navigate = useNavigate();
   const t = T[lang as Lang];
 
@@ -46,16 +47,18 @@ function Home() {
     const q = query.trim().toLowerCase();
     if (!q) return MUSEUMS;
     return MUSEUMS.filter((m) =>
-      `${m.name} ${m.city} ${THEME_LABEL[m.theme]}`.toLowerCase().includes(q),
+      `${m.name} ${museumName(m.id, m.name, lang)} ${m.city} ${THEME_LABEL[m.theme]}`
+        .toLowerCase()
+        .includes(q),
     );
-  }, [query]);
+  }, [query, lang]);
 
   const openCode = () => {
     const c = code.trim().toLowerCase();
     if (getExhibit(c)) {
       navigate({ to: "/exhibit/$id", params: { id: c } });
     } else {
-      setCodeError(true);
+      setCodeError(t.codeNotFound);
     }
   };
 
@@ -73,38 +76,21 @@ function Home() {
         <LanguagePills value={lang} onChange={setLang} />
       </section>
 
-      <section className="saarthi-card mt-6 p-4">
-        <p className="display text-lg">{t.scanQr}</p>
-        <p className="mt-1 text-sm opacity-70">{t.scanQrHint}</p>
-        <div className="mt-3 flex gap-2">
-          <input
-            value={code}
-            onChange={(e) => {
-              setCode(e.target.value);
-              setCodeError(false);
-            }}
-            placeholder={t.enterCode}
-            className="min-w-0 flex-1 rounded-lg border bg-transparent px-3 py-2.5 text-sm outline-none"
-            style={{ borderColor: "var(--border)" }}
-          />
-          <button
-            type="button"
-            onClick={openCode}
-            className="rounded-lg px-4 py-2.5 text-sm font-semibold"
-            style={{
-              backgroundColor: "var(--brand)",
-              color: "var(--brand-foreground)",
-            }}
-          >
-            {t.open}
-          </button>
-        </div>
-        {codeError && (
-          <p className="mt-2 text-xs" style={{ color: "var(--destructive)" }}>
-            {t.codeNotFound}
-          </p>
-        )}
-      </section>
+      <div className="mt-6">
+        <QrEntry
+          title={t.scanQr}
+          hint={t.scanQrHint}
+          placeholder={t.enterCode}
+          openLabel={t.open}
+          error={codeError}
+          value={code}
+          onChange={(v) => {
+            setCode(v);
+            setCodeError(null);
+          }}
+          onOpen={openCode}
+        />
+      </div>
 
       <section className="mt-7 flex-1">
         <p className="mb-2 text-xs uppercase tracking-widest opacity-60">
@@ -132,11 +118,12 @@ function Home() {
                 />
                 <span className="min-w-0">
                   <span className="display block text-base leading-snug">
-                    {m.name}
+                    {museumName(m.id, m.name, lang)}
                   </span>
                   <span className="mt-0.5 block text-xs opacity-65">
-                    {m.city} · {THEME_LABEL[m.theme]} · {m.exhibits.length}{" "}
-                    {t.exhibits.toLowerCase()}
+                    {cityName(m.city, lang)} ·{" "}
+                    {themeLabel(m.theme, THEME_LABEL[m.theme], lang)} ·{" "}
+                    {m.exhibits.length} {t.exhibits.toLowerCase()}
                   </span>
                 </span>
               </Link>
