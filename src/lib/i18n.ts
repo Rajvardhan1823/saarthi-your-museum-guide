@@ -40,7 +40,11 @@ type Dict = {
   enterCode: string;
   open: string;
   codeNotFound: string;
+  qrInMuseum: string;
+  qrInMuseumHint: string;
+  codeNotInMuseum: string;
 };
+
 
 export const T: Record<Lang, Dict> = {
   en: {
