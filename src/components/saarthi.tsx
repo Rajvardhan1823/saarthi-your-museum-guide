@@ -137,3 +137,102 @@ export function TopBar({
     </header>
   );
 }
+
+/** Siri-style breathing orb shown while Saarthi is thinking or speaking. */
+export function SiriOrb({
+  active,
+  size = 96,
+}: {
+  active: boolean;
+  size?: number;
+}) {
+  return (
+    <div
+      className="relative shrink-0"
+      style={{ width: size, height: size }}
+      aria-hidden="true"
+    >
+      <span
+        className={`siri-ring absolute inset-0 rounded-full ${active ? "" : "siri-paused"}`}
+      />
+      <span
+        className={`siri-blob siri-blob-a absolute inset-[10%] rounded-full ${active ? "" : "siri-paused"}`}
+      />
+      <span
+        className={`siri-blob siri-blob-b absolute inset-[18%] rounded-full ${active ? "" : "siri-paused"}`}
+      />
+      <span
+        className={`siri-blob siri-blob-c absolute inset-[26%] rounded-full ${active ? "" : "siri-paused"}`}
+      />
+    </div>
+  );
+}
+
+/** QR / printed-code entry, reused on the home screen and inside each museum. */
+export function QrEntry({
+  title,
+  hint,
+  placeholder,
+  openLabel,
+  error,
+  value,
+  onChange,
+  onOpen,
+}: {
+  title: string;
+  hint: string;
+  placeholder: string;
+  openLabel: string;
+  error?: string | null;
+  value: string;
+  onChange: (v: string) => void;
+  onOpen: () => void;
+}) {
+  return (
+    <section className="saarthi-card p-4">
+      <div className="flex items-start gap-3">
+        <span
+          className="grid h-10 w-10 shrink-0 place-items-center rounded-lg"
+          style={{
+            backgroundColor: "color-mix(in oklab, var(--brand) 18%, transparent)",
+            color: "var(--brand)",
+          }}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 3h8v8H3V3Zm2 2v4h4V5H5Zm8-2h8v8h-8V3Zm2 2v4h4V5h-4ZM3 13h8v8H3v-8Zm2 2v4h4v-4H5Zm8-2h3v3h-3v-3Zm5 0h3v3h-3v-3Zm-5 5h3v3h-3v-3Zm5 0h3v3h-3v-3Z" />
+          </svg>
+        </span>
+        <div className="min-w-0">
+          <p className="display text-lg leading-snug">{title}</p>
+          <p className="mt-1 text-sm opacity-70">{hint}</p>
+        </div>
+      </div>
+      <div className="mt-3 flex gap-2">
+        <input
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder={placeholder}
+          className="min-w-0 flex-1 rounded-lg border bg-transparent px-3 py-2.5 text-sm outline-none"
+          style={{ borderColor: "var(--border)" }}
+        />
+        <button
+          type="button"
+          onClick={onOpen}
+          className="rounded-lg px-4 py-2.5 text-sm font-semibold"
+          style={{
+            backgroundColor: "var(--brand)",
+            color: "var(--brand-foreground)",
+          }}
+        >
+          {openLabel}
+        </button>
+      </div>
+      {error && (
+        <p className="mt-2 text-xs" style={{ color: "var(--destructive)" }}>
+          {error}
+        </p>
+      )}
+    </section>
+  );
+}
+
