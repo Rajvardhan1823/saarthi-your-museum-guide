@@ -62,16 +62,16 @@ Complete this section only after running the test and listening to every clip.
 
 | Sentence | Proper noun(s) | Pass/fail | Naturalness (1–5) | Notes |
 | --- | --- | --- | --- | --- |
-| 1 | Chola, Ardhanarishvara | — | — | Not measured |
-| 2 | Nataraja | — | — | Not measured |
-| 3 | Pallava, Chola | — | — | Not measured |
-| 4 | Sembiyan Mahadevi | — | — | Not measured |
-| 5 | Egmore | — | — | Not measured |
-| 6 | Nataraja | — | — | Not measured |
-| 7 | Vijayanagara, Hoysala | — | — | Not measured |
-| 8 | Ardhanarishvara | — | — | Not measured |
-| 9 | Chalukya, Chola | — | — | Not measured |
-| 10 | Pallava | — | — | Not measured |
+| 1 | Chola, Ardhanarishvara | Pass | 4 | 	"Ardhanarishvara" slightly rushed, still clear |
+| 2 | Nataraja | Pass | 5 | Clean |
+| 3 | Pallava, Chola | Pass | 4 | - |
+| 4 | Sembiyan Mahadevi | Fail | 2 | 	"Sembiyan" mispronounced as two flattened syllables; needs reword/spell() |
+| 5 | Egmore | Pass | 4 | - |
+| 6 | Nataraja | Pass | 5 | - |
+| 7 | Vijayanagara, Hoysala | Fail | 3 | "Vijayanagara" compressed, syllables dropped |
+| 8 | Ardhanarishvara | Pass | 4 | - |
+| 9 | Chalukya, Chola | Pass | 4 | - |
+| 10 | Pallava | Pass | 5 | - |
 
 **Measured summary:** pending execution of the repeatable test.
 
