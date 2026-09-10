@@ -301,9 +301,3 @@ these are separate from runtime build validation.
 Saarthi uses a shared logo, museum-specific themes, responsive mobile-first
 layouts, exhibit imagery, and a Saarthi favicon. The visual shell changes by
 museum theme while retaining consistent navigation and conversation controls.
-
-## License and project origin
-
-This project was initially scaffolded with [Lovable](https://lovable.dev) and
-is maintained in GitHub. Review the repository's licensing and service terms
-before deploying or redistributing it.
