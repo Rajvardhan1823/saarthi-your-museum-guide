@@ -1,20 +1,32 @@
 import { Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
-import logo from "@/assets/saarthi-logo.png.asset.json";
+import logo from "@/assets/saarthi-logo.png";
 import { LANGS, type Lang } from "@/lib/i18n";
 import type { ThemeKey } from "@/lib/museums";
 
 export function ThemeShell({
   theme,
+  backgroundImage,
   children,
 }: {
   theme: ThemeKey;
+  backgroundImage?: string;
   children: ReactNode;
 }) {
   return (
     <div
       data-theme={theme}
       className="min-h-screen transition-colors duration-500"
+      style={
+        backgroundImage
+          ? {
+              backgroundImage: `linear-gradient(to bottom, color-mix(in oklab, var(--background) 28%, transparent), color-mix(in oklab, var(--background) 42%, transparent)), url("${backgroundImage}")`,
+              backgroundPosition: "center top",
+              backgroundSize: "100% 100%, 100% 100%",
+              backgroundRepeat: "no-repeat",
+            }
+          : undefined
+      }
     >
       <div className="mx-auto flex min-h-screen w-full max-w-md flex-col px-5 pb-10">
         {children}
@@ -26,7 +38,7 @@ export function ThemeShell({
 export function Logo({ className = "h-9" }: { className?: string }) {
   return (
     <img
-      src={logo.url}
+      src={logo}
       alt="Saarthi"
       className={`${className} w-auto object-contain mix-blend-multiply dark:mix-blend-normal`}
       style={{ mixBlendMode: "multiply" }}
@@ -122,17 +134,18 @@ export function TopBar({
 }) {
   return (
     <header className="flex items-center justify-between gap-3 py-4">
-      {backTo ? (
-        <Link
-          to={backTo.to}
-          params={backTo.params as never}
-          className="text-sm opacity-75 hover:opacity-100"
-        >
-          ← {backLabel}
-        </Link>
-      ) : (
-        <BrandMark small />
-      )}
+      <div className="flex min-w-0 items-center gap-3">
+        <Logo className="h-9 max-w-28" />
+        {backTo && (
+          <Link
+            to={backTo.to}
+            params={backTo.params as never}
+            className="truncate text-sm opacity-75 hover:opacity-100"
+          >
+            ← {backLabel}
+          </Link>
+        )}
+      </div>
       {right}
     </header>
   );
@@ -235,4 +248,3 @@ export function QrEntry({
     </section>
   );
 }
-

@@ -117,7 +117,7 @@ const PERIOD: Record<string, Tri> = {
 };
 
 const pick = (table: Record<string, Tri>, key: string, en: string, lang: Lang) =>
-  lang === "en" ? en : (table[key]?.[lang] ?? en);
+  en;
 
 export const museumName = (id: string, en: string, lang: Lang) =>
   pick(MUSEUM_NAME, id, en, lang);
@@ -125,7 +125,7 @@ export const museumDesc = (id: string, en: string, lang: Lang) =>
   pick(MUSEUM_DESC, id, en, lang);
 export const cityName = (en: string, lang: Lang) => pick(CITY, en, en, lang);
 export const themeLabel = (theme: ThemeKey, en: string, lang: Lang) =>
-  lang === "en" ? en : (THEME[theme]?.[lang] ?? en);
+  en;
 export const exhibitName = (id: string, en: string, lang: Lang) =>
   pick(EXHIBIT_NAME, id, en, lang);
 export const galleryName = (en: string, lang: Lang) => pick(GALLERY, en, en, lang);

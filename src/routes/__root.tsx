@@ -84,14 +84,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "Ask any museum exhibit anything, out loud, in Marathi, Hindi or English.",
+          "Ask any museum exhibit anything, out loud, in English.",
       },
       { name: "author", content: "Saarthi" },
       { property: "og:title", content: "Saarthi — Museum voice guide" },
       {
         property: "og:description",
         content:
-          "Ask any museum exhibit anything, out loud, in Marathi, Hindi or English.",
+          "Ask any museum exhibit anything, out loud, in English.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

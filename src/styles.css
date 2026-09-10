@@ -386,6 +386,13 @@
   opacity: 0.35;
 }
 
+.saarthi-speaking-bubble {
+  width: fit-content;
+  background: color-mix(in oklab, var(--brand) 12%, var(--surface));
+  border: 1px solid color-mix(in oklab, var(--brand) 25%, var(--border));
+  box-shadow: 0 8px 24px color-mix(in oklab, var(--brand) 10%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .siri-ring,
   .siri-blob,
@@ -393,5 +400,4 @@
     animation: none;
   }
 }
-
 

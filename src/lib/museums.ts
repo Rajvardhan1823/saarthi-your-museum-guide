@@ -13,6 +13,8 @@ export type Exhibit = {
   context: string;
 };
 
+export type ExhibitCopy = Pick<Exhibit, "name" | "gallery">;
+
 export type Museum = {
   id: string;
   name: string;
@@ -39,6 +41,69 @@ export const THEME_TONE: Record<ThemeKey, string> = {
   heritage_site:
     "Speak like a heritage guide standing at the site: grounded and atmospheric. Lead with stone, craft, place, legend and the people who built it.",
 };
+
+const EXHIBIT_COPY: Partial<Record<string, ExhibitCopy>> = {};
+const _removedExhibitTranslations = `
+  "chola-nataraja": {
+    hi: { name: "चोल कांस्य नटराज", gallery: "मूर्तिकला दीर्घा" },
+    mr: { name: "चोल कांस्य नटराज", gallery: "शिल्प दालन" },
+  },
+  "maratha-armour": {
+    hi: { name: "मराठा चिलता हजार मासा कवच", gallery: "शस्त्र एवं कवच दीर्घा" },
+    mr: { name: "मराठा चिलता हजार मासा चिलखत", gallery: "शस्त्र व चिलखत दालन" },
+  },
+  "indus-seal": {
+    hi: { name: "सिंधु घाटी की सेलखड़ी मुहर", gallery: "सिंधु सभ्यता दीर्घा" },
+    mr: { name: "सिंधू संस्कृतीची सेलखडी मुद्रा", gallery: "सिंधू संस्कृती दालन" },
+  },
+  "mughal-miniature": {
+    hi: { name: "अकबरनामा लघुचित्र पृष्ठ", gallery: "लघुचित्र दीर्घा" },
+    mr: { name: "अकबरनामा लघुचित्र पान", gallery: "लघुचित्र दालन" },
+  },
+  "bharat-mata": {
+    hi: { name: "भारत माता (अबनिंद्रनाथ के बाद)", gallery: "बंगाल स्कूल" },
+    mr: { name: "भारत माता (अबनिंद्रनाथ यांच्या शैलीत)", gallery: "बंगाल स्कूल" },
+  },
+  "husain-horses": {
+    hi: { name: "घोड़े (हुसैन शैली)", gallery: "प्रोग्रेसिव आर्टिस्ट्स ग्रुप" },
+    mr: { name: "घोडे (हुसेन शैली)", gallery: "प्रोग्रेसिव आर्टिस्ट्स ग्रुप" },
+  },
+  "raza-bindu": {
+    hi: { name: "बिंदु", gallery: "प्रोग्रेसिव आर्टिस्ट्स ग्रुप" },
+    mr: { name: "बिंदू", gallery: "प्रोग्रेसिव आर्टिस्ट्स ग्रुप" },
+  },
+  "foucault-pendulum": {
+    hi: { name: "फूको पेंडुलम", gallery: "प्रवेश कक्ष" },
+    mr: { name: "फुको लंबक", gallery: "प्रवेशद्वार सभागृह" },
+  },
+  vandegraaff: {
+    hi: { name: "वैन डे ग्राफ जनित्र", gallery: "ऊर्जा गोला कक्ष" },
+    mr: { name: "व्हॅन डे ग्राफ जनित्र", gallery: "ऊर्जा गोल सभागृह" },
+  },
+  "bernoulli-blower": {
+    hi: { name: "बर्नौली बॉल ब्लोअर", gallery: "यांत्रिकी दीर्घा" },
+    mr: { name: "बर्नोली बॉल ब्लोअर", gallery: "यांत्रिकी दालन" },
+  },
+  "cave-1-padmapani": {
+    hi: { name: "पद्मपाणि बोधिसत्व, गुफा 1", gallery: "गुफा 1" },
+    mr: { name: "पद्मपाणी बोधिसत्व, लेणी 1", gallery: "लेणी 1" },
+  },
+  "cave-26-parinirvana": {
+    hi: { name: "परिनिर्वाण बुद्ध, गुफा 26", gallery: "गुफा 26" },
+    mr: { name: "परिनिर्वाण बुद्ध, लेणी 26", gallery: "लेणी 26" },
+  },
+  "chaitya-window": {
+    hi: { name: "चैत्य मेहराब, गुफा 19", gallery: "गुफा 19" },
+    mr: { name: "चैत्य कमान, लेणी 19", gallery: "लेणी 19" },
+  },
+`;
+
+export function getExhibitCopy(
+  exhibit: Exhibit,
+  lang: "en",
+): ExhibitCopy {
+  return EXHIBIT_COPY[exhibit.id] ?? exhibit;
+}
 
 const m = (
   museumId: string,

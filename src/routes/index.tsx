@@ -1,5 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
+import homeBackground from "@/assets/saarthi-home-background.png";
 import { LanguagePills, Logo, QrEntry, ThemeShell } from "@/components/saarthi";
 import { cityName, museumName, themeLabel } from "@/lib/content-i18n";
 import { T, type Lang } from "@/lib/i18n";
@@ -13,13 +14,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Scan an exhibit QR or search a museum and ask Saarthi anything, out loud, in Marathi, Hindi or English.",
+          "Scan an exhibit QR or search a museum and ask Saarthi anything, out loud, in English.",
       },
       { property: "og:title", content: "Saarthi — Museum voice guide" },
       {
         property: "og:description",
         content:
-          "Ask any exhibit anything, out loud, in Marathi, Hindi or English.",
+          "Ask any exhibit anything, out loud, in English.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -63,7 +64,7 @@ function Home() {
   };
 
   return (
-    <ThemeShell theme="history_museum">
+    <ThemeShell theme="history_museum" backgroundImage={homeBackground}>
       <div className="pt-8">
         <Logo className="h-14 -ml-2" />
         <h1 className="display mt-4 text-3xl leading-tight">{t.tagline}</h1>
