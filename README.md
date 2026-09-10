@@ -246,23 +246,10 @@ runtime responses.
 Saarthi is designed to degrade without turning every provider failure into a
 blank conversation:
 
-- Missing Gemini credentials skip live generation and use exhibit-context
-  fallback answers.
-- Gemini `429` and server/provider failures use the context fallback.
-- An empty or unusable Gemini response uses the context fallback.
-- Context fallback returns the best matching exhibit sentence when possible and
-  explicitly says when the exhibit text does not contain the requested fact.
-- Missing STT credentials or transcription failures return an actionable API
-  error for voice input; typed input remains available.
 - Rime is attempted with a short timeout so text answers are not blocked by
   slow audio generation.
 - Rime errors are surfaced in server evidence and the client falls back to
   browser speech when possible.
-- Browser playback failures also fall back to browser speech.
-- Missing microphone permission exposes a message telling the visitor to type
-  instead.
-- Sessions are held in memory; restarting the server invalidates active
-  sessions.
 
 ## Known limitations
 
